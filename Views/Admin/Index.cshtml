@@ -1,0 +1,64 @@
+﻿@model ADSBackend.Models.HomeViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>@Model.User.FullName's Dashboard</h2>
+    </div>
+    <div class="ibox-content">
+        <p>Account Type: Admin</p>
+        <a href="#" class="btn btn-success">
+            <span class="fa fa-gear"></span> Settings
+        </a>
+    </div>
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Active Passes</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>There are 12 active passes right now!</p>
+                    <a href="#" class="btn btn-primary">
+                         See Active Passes
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Pass Record</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>See a record of all passes created</p>
+                    <a href="#" class="btn btn-primary">
+                        <span class="fa fa-paper"></span> See Pass History
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Configuration</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>Configuration stuff here.</p>
+                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
+                        <span class="fa fa-cog"></span> Update Configuration
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+}
