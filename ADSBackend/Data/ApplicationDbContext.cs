@@ -13,6 +13,8 @@ namespace ADSBackend.Data
 
         public DbSet<ConfigurationItem> ConfigurationItem { get; set; }
         public DbSet<Member> Member { get; set; }
+        public DbSet<Pass> Pass { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,5 +24,8 @@ namespace ADSBackend.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+
+        public DbSet<ADSBackend.Models.PassRecord> PassRecord { get; set; }
     }
 }

@@ -9,9 +9,9 @@
         <h2>@Model.User.FullName's Dashboard</h2>
     </div>
     <div class="ibox-content">
-        <p>Some status info here.</p>
+        <p>Account Type: Admin</p>
         <a href="#" class="btn btn-success">
-            <span class="fa fa-envelope"></span> Send a Message
+            <span class="fa fa-gear"></span> Settings 
         </a>
     </div>
 </div>
@@ -22,12 +22,12 @@
         <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Environment</h5>
+                    <h5>Create a Pass</h5>
                 </div>
                 <div class="ibox-content">
-                    <p>Some stuff about the planet here.</p>
-                    <a href="#" class="btn btn-primary">
-                        <span class="fa fa-recycle"></span> Reduce, Reuse, and Recycle
+                    <p>Create your own pass here!</p>
+                    <a href="https://localhost:44375/passes" class="btn btn-primary">
+                        Pass Creator
                     </a>
                 </div>
             </div>
@@ -35,12 +35,12 @@
         <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>My Account</h5>
+                    <h5>Pass Record</h5>
                 </div>
                 <div class="ibox-content">
-                    <p>It's how you log in!</p>
-                    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
-                        <span class="fa fa-user-circle-o"></span> Manage Account
+                    <p>See a record of all passes created</p>
+                    <a href="https://localhost:44375/PassRecords" class="btn btn-primary">
+                        <span class="fa fa-paper"></span> See Pass History
                     </a>
                 </div>
             </div>
@@ -59,5 +59,6 @@
             </div>
         </div>
     </div>
+        
 
 }
