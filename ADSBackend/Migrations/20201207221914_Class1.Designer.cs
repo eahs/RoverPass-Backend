@@ -4,14 +4,16 @@ using ADSBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201207221914_Class1")]
+    partial class Class1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,31 +71,6 @@ namespace ADSBackend.Migrations
                     b.HasKey("TeacherName");
 
                     b.ToTable("Class1");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.Class2", b =>
-                {
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Block")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("JoinCode")
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.HasKey("TeacherName");
-
-                    b.ToTable("Class2");
                 });
 
             modelBuilder.Entity("ADSBackend.Models.ConfigurationItem", b =>

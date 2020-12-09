@@ -18,47 +18,60 @@
 
 @if (User.IsInRole("Admin"))
 {
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Create a Pass</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>Create your own pass here!</p>
-                    <a href="https://localhost:44375/passes" class="btn btn-primary">
-                        Pass Creator
-                    </a>
-                </div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Create a Pass</h5>
             </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Pass Record</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>See a record of all passes created</p>
-                    <a href="https://localhost:44375/PassRecords" class="btn btn-primary">
-                        <span class="fa fa-paper"></span> See Pass History
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Configuration</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>Configuration stuff here.</p>
-                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
-                        <span class="fa fa-cog"></span> Update Configuration
-                    </a>
-                </div>
+            <div class="ibox-content">
+                <p>Create your own pass here!</p>
+                <a href="https://localhost:44301/passes" class="btn btn-primary">
+                    Pass Creator
+                </a>
             </div>
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Pass Record</h5>
+            </div>
+            <div class="ibox-content">
+                <p>See a record of all passes created</p>
+                <a href="https://localhost:44301/PassRecords" class="btn btn-primary">
+                    <span class="fa fa-paper"></span> See Pass History
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Classes</h5>
+            </div>
+            <div class="ibox-content">
+                <p>Manage all of your classes here</p>
+                <a href="https://localhost:44301/Class2" class="btn btn-primary">
+                    <span class="fa fa-paper"></span> Manage Classes
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Configuration</h5>
+            </div>
+            <div class="ibox-content">
+                <p>Configuration stuff here.</p>
+                <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
+                    <span class="fa fa-cog"></span> Update Configuration
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
         
 
 }
