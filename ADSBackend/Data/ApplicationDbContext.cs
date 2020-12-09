@@ -35,6 +35,6 @@ namespace ADSBackend.Data
         public DbSet<ADSBackend.Models.Class1> Class1 { get; set; }
 
 
-        public DbSet<ADSBackend.Models.Class2> Class2 { get; set; }
+   
     }
 }

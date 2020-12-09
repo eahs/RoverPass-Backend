@@ -7,5 +7,6 @@ namespace ADSBackend.Models
 {
     public class PassRecord1
     {
+
     }
 }
