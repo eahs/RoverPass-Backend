@@ -12,8 +12,8 @@ namespace ADSBackend.Data
         }
 
         public DbSet<ConfigurationItem> ConfigurationItem { get; set; }
-        public DbSet<Member> Member { get; set; }
         public DbSet<Pass> Pass { get; set; }
+        public DbSet<ADSBackend.Models.Class> Class { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -25,14 +25,6 @@ namespace ADSBackend.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-
-        public DbSet<ADSBackend.Models.PassRecord> PassRecord { get; set; }
-
-
-        public DbSet<ADSBackend.Models.Class> Class { get; set; }
-
-
-        public DbSet<ADSBackend.Models.Class1> Class1 { get; set; }
 
 
    

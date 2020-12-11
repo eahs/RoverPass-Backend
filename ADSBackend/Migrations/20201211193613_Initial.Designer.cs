@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201118165124_PassRecord")]
-    partial class PassRecord
+    [Migration("20201211193613_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,32 @@ namespace ADSBackend.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ADSBackend.Models.Class", b =>
+                {
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(32)")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("Block")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(32)")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("JoinCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(32)")
+                        .HasMaxLength(32);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(32)")
+                        .HasMaxLength(32);
+
+                    b.HasKey("TeacherName");
+
+                    b.ToTable("Class");
+                });
 
             modelBuilder.Entity("ADSBackend.Models.ConfigurationItem", b =>
                 {
@@ -138,39 +164,6 @@ namespace ADSBackend.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ADSBackend.Models.Member", b =>
-                {
-                    b.Property<int>("MemberId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PasswordSalt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MemberId");
-
-                    b.ToTable("Member");
-                });
-
             modelBuilder.Entity("ADSBackend.Models.Pass", b =>
                 {
                     b.Property<int>("PassId")
@@ -184,37 +177,14 @@ namespace ADSBackend.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("memberId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("PassId");
 
-                    b.HasIndex("memberId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pass");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.PassRecord", b =>
-                {
-                    b.Property<int>("PassId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("IsssuedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Reason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("memberId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PassId");
-
-                    b.HasIndex("memberId");
-
-                    b.ToTable("PassRecord");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -320,18 +290,9 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Pass", b =>
                 {
-                    b.HasOne("ADSBackend.Models.Member", "Member")
+                    b.HasOne("ADSBackend.Models.Identity.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("memberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.PassRecord", b =>
-                {
-                    b.HasOne("ADSBackend.Models.Member", "Member")
-                        .WithMany()
-                        .HasForeignKey("memberId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

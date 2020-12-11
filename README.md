@@ -10,7 +10,7 @@ Advanced Data Structures mobile API backend boilerplate project
   - Press `Control + F5` to run the project without the debugger, or `F5` to run the project with the debugger attached.
 - Seed Data
   - When running the project for the first time, the database will be seeded with an admin user.
-  - You can log in to this account with the username `admin` and the password `Password123!`. It is _highly_ recommended that you change this password after logging in for the first time.
+  - You can log in to this account with the username `admin@roverpass.me` and the password `Password123!`. It is _highly_ recommended that you change this password after logging in for the first time.
 
 ## Possible Issues
 - Problem: Yellow triangle appears next to Dependencies for the ADSBackend project

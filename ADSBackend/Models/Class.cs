@@ -20,12 +20,12 @@ namespace ADSBackend.Models
 		[StringLength(32, MinimumLength = 1, ErrorMessage = "Class Name is required")]  // Max 32 characters, min 1 character
 		[Display(Name = "Class Name")]
 		public string Name { get; set; }
+
 		[Required]
 		[StringLength(32, MinimumLength = 1, ErrorMessage = "Block is required")]  // Max 32 characters, min 1 character
 		[Display(Name = "Block")]
-
-		
 		public String Block { get; set; }
+
 		[Required]
 		[StringLength(32, MinimumLength = 1, ErrorMessage = "Block is required")]  // Max 32 characters, min 1 character
 		[Display(Name = "Class Code")]

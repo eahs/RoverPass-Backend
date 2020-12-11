@@ -23,7 +23,8 @@ namespace ADSBackend.Configuration
 
             var adminUser = new ApplicationUser
             {
-                UserName = "admin",
+                UserName = "admin@roverpass.me",
+                Email = "admin@roverpass.me",
                 FirstName = "Admin"
             };
 

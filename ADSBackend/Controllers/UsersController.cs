@@ -123,6 +123,7 @@ namespace ADSBackend.Controllers
                 {
                     var user = await _context.Users.FindAsync(id);
 
+                    user.UserName = viewModel.Email;
                     user.Email = viewModel.Email;
                     user.FirstName = viewModel.FirstName;
                     user.LastName = viewModel.LastName;

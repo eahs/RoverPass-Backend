@@ -13,9 +13,13 @@
 
   <ItemGroup>
     <Compile Remove="Data\Migrations\**" />
+    <Compile Remove="Views\Pass Record\**" />
     <Content Remove="Data\Migrations\**" />
+    <Content Remove="Views\Pass Record\**" />
     <EmbeddedResource Remove="Data\Migrations\**" />
+    <EmbeddedResource Remove="Views\Pass Record\**" />
     <None Remove="Data\Migrations\**" />
+    <None Remove="Views\Pass Record\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Pass Record\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
