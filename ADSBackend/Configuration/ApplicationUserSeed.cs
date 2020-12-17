@@ -16,7 +16,7 @@ namespace ADSBackend.Configuration
 
         public void CreateAdminUser()
         {
-            if (_userManager.FindByNameAsync("admin").Result != null)
+            if (_userManager.FindByNameAsync("admin@roverpass.me").Result != null)
             {
                 return;
             }
