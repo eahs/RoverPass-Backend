@@ -40,6 +40,10 @@
                 <li is-active-route asp-controller="Admin">
                     <a asp-controller="Admin" asp-action="Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a>
                 </li>
+                <li is-active-route asp-controller="Pass">
+                    <a asp-controller="Pass" asp-action="Index"><i class="fa fa-ticket"></i><span class="nav-label">Passes</span></a>
+                </li>
+
                 @if (User.IsInRole("Admin"))
                 {
                     <li is-active-route asp-controller="Users">

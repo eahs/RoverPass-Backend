@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 namespace ADSBackend.Models
 {
     public class Pass
-    {
-        
+    {        
         [Key]
         public int PassId { get; set; }
         public string Reason { get; set; }
         public DateTime IsssuedDate { get; set; }
         public int UserId { get; set; }
         public ApplicationUser User { get; set; }
+        public int? ReviewerId { get; set; }
+        public ApplicationUser Reviewer { get; set; }
     }
 }

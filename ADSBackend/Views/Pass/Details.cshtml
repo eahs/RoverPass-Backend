@@ -1,0 +1,42 @@
+﻿@model ADSBackend.Models.Pass
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pass</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsssuedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsssuedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Reviewer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reviewer.FirstName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PassId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
