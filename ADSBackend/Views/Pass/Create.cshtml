@@ -23,12 +23,16 @@
                 <span asp-validation-for="IssuedDate" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="PassTypeId" class="control-label"></label>
+                <select asp-for="PassTypeId" class="form-control" asp-items="ViewBag.PassTypeId"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ReviewerId" class="control-label"></label>
-                <select asp-for="ReviewerId" class ="form-control" asp-items="ViewBag.ReviewerId"></select>
+                <select asp-for="ReviewerId" class="form-control" asp-items="ViewBag.ReviewerId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

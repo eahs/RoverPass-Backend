@@ -55,6 +55,8 @@ namespace ADSBackend.Controllers
         {
             ViewData["ReviewerId"] = new SelectList(_context.Users, "Id", "FirstName");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "FirstName");
+            ViewData["PassTypeId"] = new SelectList(_context.PassType, "PassTypeId", "Name");
+
             return View();
         }
 
@@ -63,7 +65,7 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PassId,Reason,IssuedDate,UserId,ReviewerId")] Pass pass)
+        public async Task<IActionResult> Create([Bind("PassId,Reason,IssuedDate,UserId,ReviewerId,PassTypeId")] Pass pass)
         {
             if (ModelState.IsValid)
             {
@@ -73,6 +75,8 @@ namespace ADSBackend.Controllers
             }
             ViewData["ReviewerId"] = new SelectList(_context.Users, "Id", "FirstName", pass.ReviewerId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "FirstName", pass.UserId);
+            ViewData["PassTypeId"] = new SelectList(_context.PassType, "PassTypeId", "Name", pass.PassTypeId);
+
             return View(pass);
         }
 
