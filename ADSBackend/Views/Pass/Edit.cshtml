@@ -29,6 +29,12 @@
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="PassTypeId" class="control-label"></label>
+                <select asp-for="PassTypeId" class="form-control" asp-items="ViewBag.PassTypeId"></select>
+                <span asp-validation-for="PassTypeId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="ReviewerId" class="control-label"></label>
                 <select asp-for="ReviewerId" class="form-control" asp-items="ViewBag.ReviewerId"></select>
                 <span asp-validation-for="ReviewerId" class="text-danger"></span>

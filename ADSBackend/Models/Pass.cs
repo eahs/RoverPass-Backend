@@ -11,6 +11,8 @@ namespace ADSBackend.Models
     {        
         [Key]
         public int PassId { get; set; }
+
+        [Display(Name = "Pass Type")]
         public int PassTypeId { get; set; }
         public PassType PassType { get; set; }
         public bool IsApproved { get; set; }
