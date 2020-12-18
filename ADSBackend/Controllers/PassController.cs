@@ -133,6 +133,7 @@ namespace ADSBackend.Controllers
             }
             ViewData["ReviewerId"] = new SelectList(_context.Users, "Id", "FirstName", pass.ReviewerId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "FirstName", pass.UserId);
+            ViewData["PassTypeId"] = new SelectList(_context.PassType, "PassTypeId", "Name", pass.PassTypeId);
             return View(pass);
         }
 
