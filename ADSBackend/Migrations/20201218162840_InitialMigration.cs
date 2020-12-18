@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ADSBackend.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,6 +74,21 @@ namespace ADSBackend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ConfigurationItem", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PassType",
+                columns: table => new
+                {
+                    PassTypeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    StudentCreatable = table.Column<bool>(nullable: false),
+                    IsEnabled = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PassType", x => x.PassTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,13 +203,28 @@ namespace ADSBackend.Migrations
                 {
                     PassId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PassTypeId = table.Column<int>(nullable: false),
+                    IsApproved = table.Column<bool>(nullable: false),
                     Reason = table.Column<string>(nullable: true),
-                    IsssuedDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    IssuedDate = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    ReviewerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pass", x => x.PassId);
+                    table.ForeignKey(
+                        name: "FK_Pass_PassType_PassTypeId",
+                        column: x => x.PassTypeId,
+                        principalTable: "PassType",
+                        principalColumn: "PassTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pass_AspNetUsers_ReviewerId",
+                        column: x => x.ReviewerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Pass_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -243,6 +273,16 @@ namespace ADSBackend.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Pass_PassTypeId",
+                table: "Pass",
+                column: "PassTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pass_ReviewerId",
+                table: "Pass",
+                column: "ReviewerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pass_UserId",
                 table: "Pass",
                 column: "UserId");
@@ -276,6 +316,9 @@ namespace ADSBackend.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "PassType");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

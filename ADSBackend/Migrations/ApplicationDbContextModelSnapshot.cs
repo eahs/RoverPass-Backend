@@ -169,8 +169,14 @@ namespace ADSBackend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("IsssuedDate")
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssuedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PassTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Reason")
                         .HasColumnType("nvarchar(max)");
@@ -183,11 +189,34 @@ namespace ADSBackend.Migrations
 
                     b.HasKey("PassId");
 
+                    b.HasIndex("PassTypeId");
+
                     b.HasIndex("ReviewerId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Pass");
+                });
+
+            modelBuilder.Entity("ADSBackend.Models.PassType", b =>
+                {
+                    b.Property<int>("PassTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("StudentCreatable")
+                        .HasColumnType("bit");
+
+                    b.HasKey("PassTypeId");
+
+                    b.ToTable("PassType");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -293,6 +322,12 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Pass", b =>
                 {
+                    b.HasOne("ADSBackend.Models.PassType", "PassType")
+                        .WithMany()
+                        .HasForeignKey("PassTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ADSBackend.Models.Identity.ApplicationUser", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewerId");

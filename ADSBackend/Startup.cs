@@ -135,6 +135,7 @@ namespace ADSBackend
             {
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
                 // seed the AspNetRoles table
                 var roleSeed = new ApplicationRoleSeed(roleManager);
@@ -143,6 +144,9 @@ namespace ADSBackend
                 // seed the AspNetUsers table
                 var userSeed = new ApplicationUserSeed(userManager);
                 userSeed.CreateAdminUser();
+
+                var dbSeed = new ApplicationDbSeed(dbContext);
+                dbSeed.SeedDatabase();
             }
         }
     }

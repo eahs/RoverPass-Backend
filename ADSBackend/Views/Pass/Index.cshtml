@@ -16,7 +16,10 @@
                 @Html.DisplayNameFor(model => model.Reason)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsssuedDate)
+                @Html.DisplayNameFor(model => model.IssuedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassType.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.User)
@@ -34,7 +37,10 @@
                 @Html.DisplayFor(modelItem => item.Reason)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsssuedDate)
+                @Html.DisplayFor(modelItem => item.IssuedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassType.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.FirstName)

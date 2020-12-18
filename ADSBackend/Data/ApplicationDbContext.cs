@@ -13,6 +13,7 @@ namespace ADSBackend.Data
 
         public DbSet<ConfigurationItem> ConfigurationItem { get; set; }
         public DbSet<Pass> Pass { get; set; }
+        public DbSet<PassType> PassType { get; set; }
         public DbSet<ADSBackend.Models.Class> Class { get; set; }
 
 

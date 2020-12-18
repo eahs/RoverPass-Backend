@@ -11,8 +11,12 @@ namespace ADSBackend.Models
     {        
         [Key]
         public int PassId { get; set; }
+        public int PassTypeId { get; set; }
+        public PassType PassType { get; set; }
+        public bool IsApproved { get; set; }
         public string Reason { get; set; }
-        public DateTime IsssuedDate { get; set; }
+        [Display(Name = "Date Issued")]
+        public DateTime IssuedDate { get; set; }
         public int UserId { get; set; }
         public ApplicationUser User { get; set; }
         public int? ReviewerId { get; set; }

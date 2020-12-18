@@ -22,7 +22,11 @@ namespace ADSBackend.Controllers
         // GET: Pass
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Pass.Include(p => p.Reviewer).Include(p => p.User);
+            var applicationDbContext = _context.Pass
+                                               .Include(p => p.PassType)
+                                               .Include(p => p.Reviewer)
+                                               .Include(p => p.User);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -59,7 +63,7 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PassId,Reason,IsssuedDate,UserId,ReviewerId")] Pass pass)
+        public async Task<IActionResult> Create([Bind("PassId,Reason,IssuedDate,UserId,ReviewerId")] Pass pass)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +99,7 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PassId,Reason,IsssuedDate,UserId,ReviewerId")] Pass pass)
+        public async Task<IActionResult> Edit(int id, [Bind("PassId,Reason,IssuedDate,UserId,ReviewerId")] Pass pass)
         {
             if (id != pass.PassId)
             {

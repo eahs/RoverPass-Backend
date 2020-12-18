@@ -1,0 +1,12 @@
+[
+  {
+    "Name": "Bathroom",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Library",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  }
+]
