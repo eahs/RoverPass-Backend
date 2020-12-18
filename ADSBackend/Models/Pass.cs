@@ -19,8 +19,12 @@ namespace ADSBackend.Models
         public string Reason { get; set; }
         [Display(Name = "Date Issued")]
         public DateTime IssuedDate { get; set; }
+
+        [Display(Name = "Student")]
         public int UserId { get; set; }
         public ApplicationUser User { get; set; }
+
+        [Display(Name = "Teacher")]
         public int? ReviewerId { get; set; }
         public ApplicationUser Reviewer { get; set; }
     }
