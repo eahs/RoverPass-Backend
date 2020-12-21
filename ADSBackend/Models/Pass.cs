@@ -20,6 +20,13 @@ namespace ADSBackend.Models
         [Display(Name = "Date Issued")]
         public DateTime IssuedDate { get; set; }
 
+        [Display(Name = "Date")]
+        public DateTime SignInTime { get; set; }
+        [Display(Name = "Sign In Time")]
+        public DateTime SignOutTime { get; set; }
+        [Display(Name = "Sign Out Time")]
+        public DateTime StartDate { get; set; }
+
         [Display(Name = "Student")]
         public int UserId { get; set; }
         public ApplicationUser User { get; set; }
