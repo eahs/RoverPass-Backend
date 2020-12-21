@@ -8,5 +8,40 @@
     "Name": "Library",
     "StudentCreatable": true,
     "IsEnabled": true
+  },
+  {
+    "Name": "Guidance",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "PE Department",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Grade Leval Office",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Main Office",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Teachers Room",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Water Fountain",
+    "StudentCreatable": true,
+    "IsEnabled": true
+  },
+  {
+    "Name": "Security Desk",
+    "StudentCreatable": true,
+    "IsEnabled": true
   }
 ]
