@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ADSBackend.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class AddedClass : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,14 +54,14 @@ namespace ADSBackend.Migrations
                 name: "Class",
                 columns: table => new
                 {
-                    TeacherName = table.Column<string>(maxLength: 32, nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Block = table.Column<string>(maxLength: 32, nullable: false),
-                    JoinCode = table.Column<string>(maxLength: 32, nullable: false)
+                    teacherName = table.Column<string>(nullable: false),
+                    Block = table.Column<int>(nullable: false),
+                    className = table.Column<string>(nullable: true),
+                    roomNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Class", x => x.TeacherName);
+                    table.PrimaryKey("PK_Class", x => x.teacherName);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,6 +207,9 @@ namespace ADSBackend.Migrations
                     IsApproved = table.Column<bool>(nullable: false),
                     Reason = table.Column<string>(nullable: true),
                     IssuedDate = table.Column<DateTime>(nullable: false),
+                    SignInTime = table.Column<DateTime>(nullable: false),
+                    SignOutTime = table.Column<DateTime>(nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     ReviewerId = table.Column<int>(nullable: true)
                 },
