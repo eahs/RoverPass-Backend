@@ -21,26 +21,19 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Class", b =>
                 {
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("teacherName")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Block")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<int>("Block")
+                        .HasColumnType("int");
 
-                    b.Property<string>("JoinCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("className")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("roomNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TeacherName");
+                    b.HasKey("teacherName");
 
                     b.ToTable("Class");
                 });

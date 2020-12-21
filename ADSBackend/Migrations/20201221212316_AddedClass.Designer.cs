@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201218162840_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201221212316_AddedClass")]
+    partial class AddedClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,26 +23,19 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Class", b =>
                 {
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("teacherName")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Block")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<int>("Block")
+                        .HasColumnType("int");
 
-                    b.Property<string>("JoinCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("className")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                    b.Property<string>("roomNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TeacherName");
+                    b.HasKey("teacherName");
 
                     b.ToTable("Class");
                 });
@@ -185,6 +178,15 @@ namespace ADSBackend.Migrations
 
                     b.Property<int?>("ReviewerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("SignInTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SignOutTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
