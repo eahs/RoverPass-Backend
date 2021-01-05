@@ -23,19 +23,19 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Class", b =>
                 {
-                    b.Property<string>("teacherName")
+                    b.Property<string>("TeacherName")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Block")
                         .HasColumnType("int");
 
-                    b.Property<string>("className")
+                    b.Property<string>("ClassName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("roomNumber")
+                    b.Property<string>("RoomNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("teacherName");
+                    b.HasKey("TeacherName");
 
                     b.ToTable("Class");
                 });

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ADSBackend.Data;
 using ADSBackend.Models;
+using ADSBackend.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ADSBackend.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ClassController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,7 +29,7 @@ namespace ADSBackend.Controllers
         }
 
         // GET: Class/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -34,7 +37,8 @@ namespace ADSBackend.Controllers
             }
 
             var @class = await _context.Class
-                .FirstOrDefaultAsync(m => m.teacherName == id);
+                .Include(p => p.Period)
+                .FirstOrDefaultAsync(m => m.ClassId == id);
             if (@class == null)
             {
                 return NotFound();
@@ -46,6 +50,8 @@ namespace ADSBackend.Controllers
         // GET: Class/Create
         public IActionResult Create()
         {
+            ViewData["PeriodId"] = new SelectList(_context.Period.OrderBy(p => p.Order), "PeriodId", "Name");
+
             return View();
         }
 
@@ -54,8 +60,22 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("teacherName,Block,className,roomNumber")] Class @class)
+        public async Task<IActionResult> Create([Bind("ClassId,TeacherName,PeriodId,ClassName,RoomNumber")] Class @class)
         {
+            // Keep generating joincodes until you find a unique one
+            while (true)
+            {
+                @class.JoinCode = RandomString.Generate(6);
+
+                var cls = await _context.Class.FirstOrDefaultAsync(cl => cl.JoinCode == @class.JoinCode);
+
+                if (cls == null)
+                    break;
+            }
+
+            ModelState.Clear();
+            TryValidateModel(@class);
+
             if (ModelState.IsValid)
             {
                 _context.Add(@class);
@@ -66,18 +86,20 @@ namespace ADSBackend.Controllers
         }
 
         // GET: Class/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var @class = await _context.Class.FindAsync(id);
+            var @class = await _context.Class.Include(p => p.Period).FirstOrDefaultAsync(p => p.ClassId == id);
             if (@class == null)
             {
                 return NotFound();
             }
+            ViewData["PeriodId"] = new SelectList(_context.Period.OrderBy(p => p.Order), "PeriodId", "Name");
+
             return View(@class);
         }
 
@@ -86,23 +108,36 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("teacherName,Block,className,roomNumber")] Class @class)
+        public async Task<IActionResult> Edit(int id, [Bind("ClassId,TeacherName,PeriodId,ClassName,RoomNumber")] Class @class)
         {
-            if (id != @class.teacherName)
+            if (id != @class.ClassId)
             {
                 return NotFound();
             }
+
+            var cls = await _context.Class.Include(p => p.Period).FirstOrDefaultAsync(c => c.ClassId == id);
+
+            if (cls == null)
+            {
+                return NotFound();
+            }
+
+            // Copy over the fields from the form
+            cls.TeacherName = @class.TeacherName;
+            cls.RoomNumber = @class.RoomNumber;
+            cls.ClassName = @class.ClassName;
+            cls.PeriodId = @class.PeriodId;
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(@class);
+                    _context.Update(cls);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClassExists(@class.teacherName))
+                    if (!ClassExists(@class.ClassId))
                     {
                         return NotFound();
                     }
@@ -113,11 +148,14 @@ namespace ADSBackend.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(@class);
+
+            ViewData["PeriodId"] = new SelectList(_context.Period.OrderBy(p => p.Order), "PeriodId", "Name");
+
+            return View(cls);
         }
 
         // GET: Class/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -125,7 +163,7 @@ namespace ADSBackend.Controllers
             }
 
             var @class = await _context.Class
-                .FirstOrDefaultAsync(m => m.teacherName == id);
+                .FirstOrDefaultAsync(m => m.ClassId == id);
             if (@class == null)
             {
                 return NotFound();
@@ -137,7 +175,7 @@ namespace ADSBackend.Controllers
         // POST: Class/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var @class = await _context.Class.FindAsync(id);
             _context.Class.Remove(@class);
@@ -145,9 +183,9 @@ namespace ADSBackend.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClassExists(string id)
+        private bool ClassExists(int id)
         {
-            return _context.Class.Any(e => e.teacherName == id);
+            return _context.Class.Any(e => e.ClassId == id);
         }
     }
 }

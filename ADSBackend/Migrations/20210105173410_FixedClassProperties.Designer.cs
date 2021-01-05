@@ -4,14 +4,16 @@ using ADSBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210105173410_FixedClassProperties")]
+    partial class FixedClassProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,10 +23,11 @@ namespace ADSBackend.Migrations
 
             modelBuilder.Entity("ADSBackend.Models.Class", b =>
                 {
-                    b.Property<int>("ClassId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("TeacherName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Block")
+                        .HasColumnType("int");
 
                     b.Property<string>("ClassName")
                         .HasColumnType("nvarchar(max)");
@@ -34,21 +37,13 @@ namespace ADSBackend.Migrations
                         .HasColumnType("nvarchar(6)")
                         .HasMaxLength(6);
 
-                    b.Property<int>("PeriodId")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoomNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TeacherName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClassId");
+                    b.HasKey("TeacherName");
 
                     b.HasIndex("JoinCode")
                         .IsUnique();
-
-                    b.HasIndex("PeriodId");
 
                     b.ToTable("Class");
                 });
@@ -236,24 +231,6 @@ namespace ADSBackend.Migrations
                     b.ToTable("PassType");
                 });
 
-            modelBuilder.Entity("ADSBackend.Models.Period", b =>
-                {
-                    b.Property<int>("PeriodId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
-                    b.HasKey("PeriodId");
-
-                    b.ToTable("Period");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -353,15 +330,6 @@ namespace ADSBackend.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.Class", b =>
-                {
-                    b.HasOne("ADSBackend.Models.Period", "Period")
-                        .WithMany()
-                        .HasForeignKey("PeriodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("ADSBackend.Models.Pass", b =>

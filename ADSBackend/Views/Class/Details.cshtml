@@ -11,26 +11,38 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Block)
+            @Html.DisplayNameFor(model => model.TeacherName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Block)
+            @Html.DisplayFor(model => model.TeacherName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.className)
+            @Html.DisplayNameFor(model => model.Period.Name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.className)
+            @Html.DisplayFor(model => model.Period.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.roomNumber)
+            @Html.DisplayNameFor(model => model.ClassName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.roomNumber)
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoomNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JoinCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JoinCode)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.teacherName">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ClassId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

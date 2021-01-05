@@ -14,8 +14,8 @@ namespace ADSBackend.Data
         public DbSet<ConfigurationItem> ConfigurationItem { get; set; }
         public DbSet<Pass> Pass { get; set; }
         public DbSet<PassType> PassType { get; set; }
-        public DbSet<ADSBackend.Models.Class> Class { get; set; }
-
+        public DbSet<Class> Class { get; set; }
+        public DbSet<Period> Period { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -24,6 +24,10 @@ namespace ADSBackend.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<Class>()
+                .HasIndex(c => c.JoinCode)
+                .IsUnique();
+
         }
 
 

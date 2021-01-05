@@ -51,10 +51,40 @@ namespace ADSBackend.Configuration
             }
         }
 
+        public void SeedDatabaseOrUpdate<TEntity>(string jsonFile, DbSet<TEntity> dbset, string matchingProperty) where TEntity : class
+        {
+            var records = dbset.ToList();
+            if (records == null || records.Count == 0)
+            {
+                SeedDatabase<TEntity>(jsonFile, dbset, true);
+            }
+            else
+            {
+                var precords = JsonConvert.DeserializeObject<List<TEntity>>(GetJson(jsonFile));
+                foreach (var rec in precords)
+                {
+                    
+                    var p2 = rec.GetType().GetProperty(matchingProperty).GetValue(rec, null);
+                    var exists = records.FirstOrDefault(c => c.GetType().GetProperty(matchingProperty).GetValue(c, null).Equals(p2));
+                    
+                    if (exists == null)
+                    {
+                        dbset.Add(rec);
+                        _context.SaveChanges();
+                    }
+                }
+
+            }
+
+
+        }
+
         public void SeedDatabase()
         {
             CreatePassTypes();
+            SeedDatabaseOrUpdate<Period>("Periods.json", _context.Period, "Name");
         }
+
 
         private void CreatePassTypes()
         {
