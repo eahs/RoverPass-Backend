@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201221212316_AddedClass")]
+    [Migration("20201221223007_AddedClass")]
     partial class AddedClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
