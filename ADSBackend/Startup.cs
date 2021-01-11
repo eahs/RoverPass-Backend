@@ -23,22 +23,37 @@ namespace ADSBackend
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Env { get; set; }
+        public string ConnString { get; set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
+
+            if (Env.IsDevelopment())
+                ConnString = Configuration.GetConnectionString("RoverPassAppDevelopmentContext");
+            else if (Env.IsStaging())
+                ConnString = Configuration.GetConnectionString("RoverPassAppStagingContext");
+            else if (Env.IsProduction())
+                ConnString = Configuration.GetConnectionString("RoverPassAppProductionContext");
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages()
-                    .AddRazorRuntimeCompilation();
-
             services.AddCors();
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("ADSBackendContext"));
+                // options.UseSqlServer(Configuration.GetConnectionString("ScholarshipsContext"));
+                options.UseMySql(
+                    ConnString,
+                    mySqlOptions =>
+                    {
+                        mySqlOptions.ServerVersion(new Version(10, 4, 11),
+                            Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MariaDb); // replace with your Server Version and Type
+                    });
+
             });
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
@@ -54,12 +69,17 @@ namespace ADSBackend
 
             services.AddTransient<Services.Configuration>();
 
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+#if DEBUG
+            if (Env.IsDevelopment())
+            {
+                services.AddRazorPages().AddRazorRuntimeCompilation();
+            }
+#endif 
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ADSBackend API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Roverpass API", Version = "v1" });
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -95,6 +115,8 @@ namespace ADSBackend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            UpdateDatabase(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -148,6 +170,26 @@ namespace ADSBackend
 
                 var dbSeed = new ApplicationDbSeed(dbContext);
                 dbSeed.SeedDatabase();
+            }
+        }
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices
+                    .GetRequiredService<IServiceScopeFactory>()
+                    .CreateScope())
+                {
+                    using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
+                    {
+                        context.Database.Migrate();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                // Log error
             }
         }
     }
