@@ -641,7 +641,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   color: #f8ac59;
 }
 .btn-danger.btn-outline {
-  color: #ed5565;
+  color: #c21b2b;
 }
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
@@ -854,8 +854,8 @@ fieldset[disabled] .btn-warning.active {
   border-color: #f9b66d;
 }
 .btn-danger {
-  background-color: #ed5565;
-  border-color: #ed5565;
+  background-color: #c21b2b;
+  border-color: #c21b2b;
   color: #FFFFFF;
 }
 .btn-danger:hover,
@@ -1111,7 +1111,7 @@ button.dim:active:before {
 }
 .label-danger,
 .badge-danger {
-  background-color: #ed5565;
+  background-color: #c21b2b;
   color: #FFFFFF;
 }
 .label-info,
@@ -1909,7 +1909,7 @@ div.dt-button-info {
 }
 .has-error .form-control,
 .has-error .form-control:focus {
-  border-color: #ed5565;
+  border-color: #c21b2b;
 }
 .has-success .control-label {
   color: #1ab394;
@@ -1918,7 +1918,7 @@ div.dt-button-info {
   color: #f8ac59;
 }
 .has-error .control-label {
-  color: #ed5565;
+  color: #c21b2b;
 }
 .input-group-addon {
   background-color: #fff;
@@ -1942,7 +1942,7 @@ div.dt-button-info {
   box-shadow: none;
 }
 .slider_red .noUi-connect {
-  background: none repeat scroll 0 0 #ed5565;
+  background: none repeat scroll 0 0 #c21b2b;
   box-shadow: none;
 }
 /* UI Sortable */
@@ -2502,7 +2502,7 @@ label.error {
   background-color: #1ab394;
 }
 .toast-error {
-  background-color: #ed5565;
+  background-color: #c21b2b;
 }
 .toast-info {
   background-color: #23c6c8;
@@ -2534,7 +2534,7 @@ label.error {
   border-left: 6px solid #1c84c6;
 }
 .inspinia-notify.alert-danger {
-  border-left: 6px solid #ed5565;
+  border-left: 6px solid #c21b2b;
 }
 .inspinia-notify.alert-info {
   border-left: 6px solid #1ab394;
@@ -3293,8 +3293,8 @@ body.tour-open .animated {
 }
 .stream .stream-badge i.bg-danger {
   color: #ffffff;
-  background-color: #ed5565;
-  border-color: #ed5565;
+  background-color: #c21b2b;
+  border-color: #c21b2b;
 }
 .stream .stream-badge:before {
   content: '';
@@ -4029,7 +4029,7 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-    background-color: #ed5565;
+    background-color: #c21b2b;
 }
 .white-bg {
   background-color: #ffffff;
@@ -4056,7 +4056,7 @@ table.table-mail tr td {
 }
 .red-bg,
 .bg-danger {
-  background-color: #ed5565;
+  background-color: #c21b2b;
   color: #ffffff;
 }
 .black-bg {
@@ -4094,11 +4094,11 @@ table.table-mail tr td {
   color: #ffffff;
 }
 .panel-danger {
-  border-color: #ed5565;
+  border-color: #c21b2b;
 }
 .panel-danger > .panel-heading {
-  background-color: #ed5565;
-  border-color: #ed5565;
+  background-color: #c21b2b;
+  border-color: #c21b2b;
   color: #ffffff;
 }
 .progress-bar {
@@ -4130,7 +4130,7 @@ table.table-mail tr td {
   background-color: #f8ac59;
 }
 .progress-bar-danger {
-  background-color: #ed5565;
+  background-color: #c21b2b;
 }
 .panel-title {
   font-size: inherit;
@@ -4159,7 +4159,7 @@ table.table-mail tr td {
   color: #f8ac59;
 }
 .text-danger {
-  color: #ed5565;
+  color: #c21b2b;
 }
 .text-muted {
   color: #888888;
@@ -5462,7 +5462,7 @@ table.issue-tracker tbody tr td {
   border-left: 3px solid #f8ac59;
 }
 .agile-list li.danger-element {
-  border-left: 3px solid #ed5565;
+  border-left: 3px solid #c21b2b;
 }
 .agile-list li.info-element {
   border-left: 3px solid #1c84c6;
@@ -5714,7 +5714,7 @@ table.shoping-cart-table tr td:last-child {
 .vote-icon.active {
   color: #1ab394;
 }
-body.body-small .vote-icon {
+body.body-small .vote-icon {F
   display: none;
 }
 .lightBoxGallery {
@@ -5825,7 +5825,7 @@ body.body-small .vote-icon {
  * metismenu - v2.0.2
  * A jQuery menu plugin
  * https://github.com/onokumus/metisMenu
- *
+ *F
  * Made by Osman Nuri Okumus
  * Under MIT License
  */
