@@ -1121,7 +1121,7 @@ button.dim:active:before {
 }
 .label-inverse,
 .badge-inverse {
-  background-color: #262626;
+  background-color: #000000;
   color: #FFFFFF;
 }
 .label-white,
@@ -4060,7 +4060,7 @@ table.table-mail tr td {
   color: #ffffff;
 }
 .black-bg {
-  background-color: #262626;
+  background-color: #000000;
 }
 .panel-primary {
   border-color: #1ab394;
