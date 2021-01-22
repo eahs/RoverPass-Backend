@@ -189,10 +189,10 @@ ul.nav-second-level {
   height: auto !important;
 }
 .nav-header a {
-  color: #DFE4ED;
+  color: #ffffff;
 }
 .nav-header .text-muted {
-  color: #8095a8;
+  color: #ffffff;
 }
 .minimalize-styl-2 {
   padding: 4px 12px;
@@ -4162,7 +4162,7 @@ table.table-mail tr td {
   color: #ed5565;
 }
 .text-muted {
-  color: #888888;
+  color: #ffffff;
 }
 .text-white {
   color: #ffffff;
@@ -5311,7 +5311,7 @@ dd.project-people {
 }
 .message-date {
   font-size: 10px;
-  color: #888888;
+  color: #ffffff;
 }
 .message-content {
   display: block;
