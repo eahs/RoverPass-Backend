@@ -52,8 +52,15 @@
                                 @Html.DisplayFor(modelItem => item.StartDate)
                             </td>
                             <td>
+                                @Html.DisplayNameFor(model => item.SignInTime)
+                            </td>
+                            <td>
+                                @Html.DisplayNameFor(model => item.SignOutTime)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.PassType.Name)
                             </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.User.FirstName)
                             </td>
