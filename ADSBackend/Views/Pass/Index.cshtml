@@ -20,20 +20,20 @@
                             @Html.DisplayNameFor(model => model.Reason)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.StartDate)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.SignInTime)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.SignOutTime)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PassType.Name)
+                            @Html.DisplayNameFor(model => model.StartDate)
                         </th>
 
                         <th>
                             @Html.DisplayNameFor(model => model.User)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassType.Name)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Reviewer)
@@ -41,6 +41,7 @@
                         <th></th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     @foreach (var item in Model)
                     {
@@ -52,10 +53,10 @@
                                 @Html.DisplayFor(modelItem => item.StartDate)
                             </td>
                             <td>
-                                @Html.DisplayNameFor(model => item.SignInTime)
+                                @Html.DisplayFor(model => item.SignInTime)
                             </td>
                             <td>
-                                @Html.DisplayNameFor(model => item.SignOutTime)
+                                @Html.DisplayFor(model => item.SignOutTime)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PassType.Name)
@@ -75,6 +76,7 @@
                         </tr>
                     }
                 </tbody>
+                    
             </table>
         </div>
     </div>

@@ -1600,7 +1600,7 @@ a.list-group-item.active:focus {
   min-height: 200px;
 }
 .h-300 {
-  min-height: 300px;
+    min-height: 300px;
 }
 .w-150 {
   min-width: 150px;
