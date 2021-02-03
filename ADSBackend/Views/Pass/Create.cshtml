@@ -13,10 +13,10 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Reason" class="control-label"></label>
-                <input asp-for="Reason" class="form-control" />
-                <span asp-validation-for="Reason" class="text-danger"></span>
+                <label asp-for="PassTypeId" class="control-label"></label>
+                <select asp-for="PassTypeId" class="form-control" asp-items="ViewBag.PassTypeId"></select>
             </div>
+
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
                 <input asp-for="StartDate" class="form-control" />
@@ -32,10 +32,7 @@
                 <input asp-for="SignOutTime" class="form-control" />
                 <span asp-validation-for="SignOutTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PassTypeId" class="control-label"></label>
-                <select asp-for="PassTypeId" class="form-control" asp-items="ViewBag.PassTypeId"></select>
-            </div>
+
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
