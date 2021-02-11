@@ -244,33 +244,6 @@ namespace ADSBackend.Migrations
                     b.ToTable("Period");
                 });
 
-            modelBuilder.Entity("ADSBackend.Models.Restriction", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("IssuedDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("restrictionType")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<int?>("staffNameId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId");
-
-                    b.HasIndex("ClassId");
-
-                    b.HasIndex("staffNameId");
-
-                    b.ToTable("Restriction");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -396,19 +369,6 @@ namespace ADSBackend.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.Restriction", b =>
-                {
-                    b.HasOne("ADSBackend.Models.Class", "cName")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ADSBackend.Models.Identity.ApplicationUser", "staffName")
-                        .WithMany()
-                        .HasForeignKey("staffNameId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
