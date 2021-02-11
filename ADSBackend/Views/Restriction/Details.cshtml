@@ -1,0 +1,36 @@
+﻿@model ADSBackend.Models.Restriction
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Restriction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssuedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cName.JoinCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.restrictionType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.restrictionType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
