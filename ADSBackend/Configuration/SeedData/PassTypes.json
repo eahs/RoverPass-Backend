@@ -43,5 +43,10 @@
     "Name": "Security Desk",
     "StudentCreatable": true,
     "IsEnabled": true
+  },
+  {
+    "Name": "Math Lab",
+    "StudentCreatable": true,
+    "IsEnabled": true
   }
 ]
