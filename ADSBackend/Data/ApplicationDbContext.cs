@@ -30,8 +30,6 @@ namespace ADSBackend.Data
 
         }
 
-        public DbSet<ADSBackend.Models.Restriction> Restriction { get; set; }
-
 
 
    
