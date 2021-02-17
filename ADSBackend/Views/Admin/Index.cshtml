@@ -21,44 +21,48 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="ibox">
-            <div class="ibox-title">
-                <h5>Create a Pass</h5>
-            </div>
-            <div class="ibox-content">
-                <p>Create your own pass here!</p>
-                <a 076897892asp-controller="Pass" asp-action="Index" class="btn btn-primary">
-                    Pass Creator
-                </a>
-            </div>
+            <a href="/Pass">
+                <div class="widget white-bg p-lg text-center">
+                    <div class="nav-label">
+                        <i class="fa fa-ticket fa-4x"></i>
+                        <h3 class="font-bold no-margins">
+                            Passes
+                        </h3>
+                        <small>Create a pass here.</small>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="ibox">
-            <div class="ibox-title">
-                <h5>Classes</h5>
+            <a href="/Pass">
+            <div class="widget white-bg p-lg text-center">
+                <div class="nav-label">
+                    <i class="fa fa-users fa-4x"></i>
+                    <h3 class="font-bold no-margins">
+                        Classes
+                    </h3>
+                    <small>View classes here.</small>
+                </div>
             </div>
-            <div class="ibox-content">
-                <p>See your classes here!</p>
-                <a asp-controller="Class" asp-action="Index" class="btn btn-primary">
-                    Classes
-                </a>
-            </div>
+            </a>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="ibox">
-            <div class="ibox-title">
-                <h5>Configuration</h5>
+            <a href="/Configuration">
+            <div class="widget white-bg p-lg text-center">
+                <div class="nav-label">
+                    <i class="fa fa-cog fa-4x"></i>
+                    <h3 class="font-bold no-margins">
+                        Configuration
+                    </h3>
+                    <small>Change settings here.</small>
+                </div>
             </div>
-            <div class="ibox-content">
-                <p>Configuration stuff here.</p>
-                <a asp-controller="Configuration" asp-action="Index" class="btn btn-primary">
-                    <span class="fa fa-cog"></span> Update Configuration
-                </a>
-            </div>
+            </a>
         </div>
     </div>
 </div>
-
-
-    }
+}
