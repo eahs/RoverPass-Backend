@@ -30,6 +30,8 @@ namespace ADSBackend.Data
 
         }
 
+        public DbSet<ADSBackend.Models.RestrictedRoom> RestrictedRoom { get; set; }
+
 
 
    
