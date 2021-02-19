@@ -38,7 +38,7 @@
                     </div>
                 </li>
                 <li is-active-route asp-controller="Admin">
-                    <a asp-controller="Admin" asp-action="Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a>
+                    <a asp-controller="Admin" asp-action="Index"><i class="fa fa-th-large"></i><span class="nav-label">Dashboard</span></a>
                 </li>
                 <li is-active-route asp-controller="Pass">
                     <a asp-controller="Pass" asp-action="Index"><i class="fa fa-ticket"></i><span class="nav-label">Passes</span></a>
@@ -49,11 +49,11 @@
                 <li is-active-route asp-controller="Period">
                     <a asp-controller="Period" asp-action="Index"><i class="fa fa-bell"></i><span class="nav-label">Periods</span></a>
                 </li>
-                <li is-active-route asp-controller="RestrictedRoom">
-                    <a asp-controller="RestrictedRoom" asp-action="Index"><i class="fa fa-lock"></i><span class="nav-label">Room Restrictions</span></a>
-                </li>
                 @if (User.IsInRole("Admin"))
                 {
+                    <li is-active-route asp-controller="RestrictedRoom">
+                        <a asp-controller="RestrictedRoom" asp-action="Index"><i class="fa fa-lock"></i><span class="nav-label">Room Restrictions</span></a>
+                    </li>
                     <li is-active-route asp-controller="Users">
                         <a asp-controller="Users" asp-action="Index"><i class="fa fa-address-card-o"></i><span class="nav-label">Manage Users</span></a>
                     </li>
