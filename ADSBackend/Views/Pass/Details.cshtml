@@ -4,45 +4,70 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>Details | Passes</h2>
+        <p>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </p>
+    </div>
+    <div class="ibox-content">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PassTypeId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SignInTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SignOutTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
 
-<div>
-    <h4>Pass</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Reason)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Reason)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.SignOutTime)
-        </dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.SignInTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IssuedDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Reviewer)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Reviewer.FirstName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.PassId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReviewerId)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.PassType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SignInTime.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.SignOutTime)
+                            </td>
+
+
+                            <td>
+                                @Html.DisplayFor(model => model.User.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Reviewer.FirstName)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@Model.PassId" class="btn btn-primary">Edit</a>
+                            </td>
+                        </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 </div>
