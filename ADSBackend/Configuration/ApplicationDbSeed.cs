@@ -82,6 +82,7 @@ namespace ADSBackend.Configuration
         public void SeedDatabase()
         {
             CreatePassTypes();
+            CreateReportTypes();
             SeedDatabaseOrUpdate<Period>("Periods.json", _context.Period, "Name");
         }
 
@@ -110,8 +111,31 @@ namespace ADSBackend.Configuration
             }
 
         }
+        private void CreateReportTypes()
+        {
+            var typess = _context.ReportType.OrderBy(pt => pt.Name).ToList();
+            if (typess == null || typess.Count == 0)
+            {
+                SeedDatabase<ReportType>("ReportTypes.json", _context.ReportType, true);
+            }
+            else
+            {
+                var rtypes = JsonConvert.DeserializeObject<List<ReportType>>(GetJson("ReportTypes.json"));
+                foreach (var type in rtypes)
+                {
+                    var exists = typess.FirstOrDefault(p => p.Name == type.Name);
 
-       
+                    if (exists == null)
+                    {
+                        _context.ReportType.Add(type);
+                        _context.SaveChanges();
+                    }
+                }
+
+            }
+
+        }
+
 
     }
 }

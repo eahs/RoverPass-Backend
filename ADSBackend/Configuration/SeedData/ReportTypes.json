@@ -1,3 +1,46 @@
-{
-
-}
+[
+  {
+    "Name": "Misbehavior",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Fighting",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Skipping Class",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Wrong Location",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Use of Contraband",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Harrasement/bullying",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Threat",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Explicit Activity",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Dress Code Violation",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Swearing/Inapproiate Language",
+    "IsEnabled": true
+  },
+  {
+    "Name": "Other",
+    "IsEnabled": true
+  }
+]

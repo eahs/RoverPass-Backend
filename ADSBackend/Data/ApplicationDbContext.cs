@@ -16,6 +16,7 @@ namespace ADSBackend.Data
         public DbSet<PassType> PassType { get; set; }
         public DbSet<Class> Class { get; set; }
         public DbSet<Period> Period { get; set; }
+        public DbSet<ReportType> ReportType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,7 +33,7 @@ namespace ADSBackend.Data
 
         public DbSet<ADSBackend.Models.RestrictedRoom> RestrictedRoom { get; set; }
 
-        public DbSet<ADSBackend.Models.ReportType> ReportType { get; set; }
+
 
 
 
