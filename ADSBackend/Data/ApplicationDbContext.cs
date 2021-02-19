@@ -32,6 +32,8 @@ namespace ADSBackend.Data
 
         public DbSet<ADSBackend.Models.RestrictedRoom> RestrictedRoom { get; set; }
 
+        public DbSet<ADSBackend.Models.ReportType> ReportType { get; set; }
+
 
 
    
