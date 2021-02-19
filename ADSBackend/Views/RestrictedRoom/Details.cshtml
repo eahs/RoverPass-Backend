@@ -4,45 +4,59 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>RestrictedRoom</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IssuedDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IssuedDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ClassName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClassName.JoinCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RoomNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RoomNumber.JoinCode)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RestrictionType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RestrictionType)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.RestrictedRoomId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>Room Restrictions</h2>
+        <p>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </p>
+    </div>
+    <div class="ibox-content">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.User)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IssuedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClassName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RoomNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RestrictionType)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.User.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.IssuedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.ClassName.ClassName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.RoomNumber.RoomNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.RestrictionType)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@Model.RestrictedRoomId" class="btn btn-primary">Edit</a> |
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
