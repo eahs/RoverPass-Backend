@@ -4,12 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<div class="ibox">
+<div class="ibox-title">
+<h2>Classes</h2>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
+</div>
+<div class="ibox-content">
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>
@@ -51,3 +55,6 @@
 }
     </tbody>
 </table>
+</div>
+</div>
+</div>
