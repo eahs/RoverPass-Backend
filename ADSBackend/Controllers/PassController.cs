@@ -67,7 +67,7 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PassId,Reason,IssuedDate,UserId,ReviewerId,PassTypeId")] Pass pass)
+        public async Task<IActionResult> Create([Bind("PassId,Reason,StartDate,SignOutTime,SignInTime,UserId,ReviewerId,PassTypeId")] Pass pass)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace ADSBackend.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PassId,Reason,IssuedDate,UserId,ReviewerId,PassTypeId")] Pass pass)
+        public async Task<IActionResult> Edit(int id, [Bind("PassId,Reason,StartDate,SignOutTime,SignInTime,UserId,ReviewerId,PassTypeId")] Pass pass)
         {
             if (id != pass.PassId)
             {
