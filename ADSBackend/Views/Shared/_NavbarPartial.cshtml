@@ -49,6 +49,9 @@
                 <li is-active-route asp-controller="Period">
                     <a asp-controller="Period" asp-action="Index"><i class="fa fa-bell"></i><span class="nav-label">Periods</span></a>
                 </li>
+                <li is-active-route asp-controller="ReportStudents">
+                    <a asp-controller="ReportStudents" asp-action="Index"><i class="fa fa-flag"></i><span class="nav-label">Report</span></a>
+                </li>
                 @if (User.IsInRole("Admin"))
                 {
                     <li is-active-route asp-controller="RestrictedRoom">
