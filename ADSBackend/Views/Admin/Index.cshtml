@@ -1,125 +1,134 @@
-﻿@model ADSBackend.Models.HomeViewModels.HomeViewModel
+﻿@using ADSBackend.Models.Identity
+@model ADSBackend.Models.HomeViewModels.HomeViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Dashboard";
 }
 
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+@{
+    var role = (await UserManager.GetRolesAsync(user)).FirstOrDefault();
+}
 <div class="ibox">
     <div class="col-lg-12">
         <div class="widget white-bg no-padding">
             <div class="p-m">
                 <h1>@Model.User.FullName's Dashboard</h1>
-                <p>Account Type: Admin</p>
-                <img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png"no-padding><img src="https://imgur.com/umJ8KG8.png">
+                <p>Account Type: @role</p>
             </div>
         </div>
     </div>
 </div>
 
+
 @if (User.IsInRole("Admin"))
 {
-<div class="row">
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/Pass">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-ticket fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Passes
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            Create a pass here.
-                        </h3>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/Pass">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-ticket fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Passes
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                Create a pass here.
+                            </h3>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/Class">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-users fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Classes
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                View classes here.
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/ReportStudents">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-flag fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Report Student
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                Report a student here.
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/RestrictedRoom">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-lock fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Room Restrictions
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                Restrict a room here.
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/Period">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-bell fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Periods
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                Manage bell schedule and class periods.
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <a href="/Configuration">
+                    <div class="widget white-bg p-lg text-center">
+                        <div class="nav-label">
+                            <i class="fa fa-cog fa-spin fa-4x" style="color:#000000;"></i>
+                            <h3 class="font-bold no-margins" style="color:#000000;">
+                                Configuration
+                            </h3>
+                            <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
+                                Change settings here.
+                            </h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/Class">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-users fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Classes
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            View classes here.
-                        </h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/ReportStudents">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-flag fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Report Student
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            Report a student here.
-                        </h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/RestrictedRoom">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-lock fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Room Restrictions
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            Restrict a room here.
-                        </h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/Period">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-bell fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Periods
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            Manage bell schedule and class periods.
-                        </h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="ibox">
-            <a href="/Configuration">
-                <div class="widget white-bg p-lg text-center">
-                    <div class="nav-label">
-                        <i class="fa fa-cog fa-spin fa-4x" style="color:#000000;"></i>
-                        <h3 class="font-bold no-margins" style="color:#000000;">
-                            Configuration
-                        </h3>
-                        <h3 class="font-bold no-margins" style="color:#000000;font-size:11px;">
-                            Change settings here.
-                        </h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
 }
