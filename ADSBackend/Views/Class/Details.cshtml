@@ -1,48 +1,63 @@
 ﻿@model ADSBackend.Models.Class
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Index";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Class</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TeacherName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TeacherName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Period.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Period.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ClassName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClassName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RoomNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RoomNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.JoinCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.JoinCode)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ClassId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>Details | Classes</h2>
+        <p>
+            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        </p>
+    </div>
+    <div class="ibox-content">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TeacherName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Period)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClassName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RoomNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.JoinCode)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.TeacherName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Period.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.ClassName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.RoomNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.JoinCode)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@Model.ClassId" class="btn btn-primary">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@Model.ClassId" class="btn btn-primary">Delete</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
