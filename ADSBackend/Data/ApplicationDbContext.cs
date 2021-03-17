@@ -35,6 +35,8 @@ namespace ADSBackend.Data
 
         public DbSet<ADSBackend.Models.ReportStudent> ReportStudent { get; set; }
 
+        public DbSet<ADSBackend.Models.Timer> Timer { get; set; }
+
 
 
 
