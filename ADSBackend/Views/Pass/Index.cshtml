@@ -20,13 +20,13 @@
                             @Html.DisplayNameFor(model => model.PassTypeId)
                         </th> 
                         <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.SignInTime)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.SignOutTime)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.StartDate)
                         </th>
 
                         <th>
@@ -65,9 +65,10 @@
                                 @Html.DisplayFor(modelItem => item.Reviewer.FirstName)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.PassId" class="btn btn-primary" >Edit</a> 
-                                <a asp-action="Details" asp-route-id="@item.PassId" class="btn btn-primary" >Details</a> 
-                                <a asp-action="Delete" asp-route-id="@item.PassId" class="btn btn-primary" >Delete</a>
+                                <a href="/Timer" class="btn btn-primary">Timer</a>
+                                <a asp-action="Edit" asp-route-id="@item.PassId" class="btn btn-primary">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.PassId" class="btn btn-primary">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.PassId" class="btn btn-primary">Delete</a>
                             </td>
                         </tr>
                     }
