@@ -14,10 +14,12 @@
     var role = (await UserManager.GetRolesAsync(user)).FirstOrDefault();
 }
 <div class="ibox">
-    <div class="col-lg-12">
+    <div class="col-lg-13">
         <div class="widget white-bg no-padding">
+            <h3 class="font-bold" style="color:#000000;font-size:60px;">
+                @Model.User.FullName's Dashboard
+            </h3>
             <div class="p-m">
-                <h1>@Model.User.FullName's Dashboard</h1>
                 <p>Account Type: @role</p>
             </div>
         </div>
