@@ -20,13 +20,10 @@
                             @Html.DisplayNameFor(model => model.PassTypeId)
                         </th> 
                         <th>
-                            @Html.DisplayNameFor(model => model.StartDate)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.SignInTime)
-                        </th>
-                        <th>
                             @Html.DisplayNameFor(model => model.SignOutTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
                         </th>
 
                         <th>
@@ -48,16 +45,12 @@
                                 @Html.DisplayFor(modelItem => item.PassType.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.StartDate)
+                                @Html.DisplayFor(modelItem => item.SignOutTime.TimeOfDay)
                             </td>
                             <td>
-                                @Html.DisplayFor(model => item.SignInTime)
+                                @Html.DisplayFor(model => item.StartDate.Ticks)
                             </td>
-                            <td>
-                                @Html.DisplayFor(model => item.SignOutTime)
-                            </td>
-                            
-
+                    
                             <td>
                                 @Html.DisplayFor(modelItem => item.User.FirstName)
                             </td>
